@@ -1,0 +1,33 @@
+h1{
+	margin-right: 20%;
+    margin-left: 20%;
+    border: 2px green solid;
+    padding: 12px;
+    border-radius: 12px 48px 40px 12px;
+    align-items: center;
+}
+form{
+margin-left: 30%;
+margin-right: 30%;
+margin-top: 5%;
+grid-gap: 20%;
+}
+html{
+	font-size: 20px;
+	background-color: aquamarine;
+}
+.i1{
+	margin-left: 10%;
+}
+.i2{
+	margin-left: 20%;
+}
+.i3{
+	margin-left: 22%;
+}
+.i4{
+	margin-left: 18%;
+}
+.b1{
+	margin-left: 25%;
+}

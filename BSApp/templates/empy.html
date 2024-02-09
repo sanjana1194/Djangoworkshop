@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+ <div class="container mt-4">
+    {% if messages %}
+        {% for h in messages%}
+            <div class="alert alert-{{h.tags}} alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{h}}
+            </div>
+        {% endfor %}
+    {% endif %}
+ 	<div class="row">
+ 		<div class="card col-md-4 shadow-lg border border-warning h-100">
+ 			<div class="card-body">
+ 				<h3>Add Employee</h3>
+ 				<form method="post">
+                    {% csrf_token %}
+                    {% for j in e %}
+                        {{j}}
+                    {% endfor %}
+ 					<div class="row">
+ 						<div class="col">
+ 							<input type="reset" value="clear" class="form-control btn btn-outline-danger">
+ 						</div>
+ 						<div class="col">
+ 							<input type="submit" value="Create" class="form-control btn btn-outline-success">
+ 						</div>
+ 					</div>
+ 				</form>
+ 			</div>
+        </div>
+        <div class="card col shadow-lg border border-success h-100">
+            <h3 class="p-2">Employee Data</h3>
+            <table class="table table-hover
+            table-stripped">
+                <tr class="bg-dark text-light">
+                    <th>S.no</th>
+                    <th>Employee Id</th>
+                    <th>Employee name</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>{% for k in ud %}</tr>
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{k.eid}}</td>
+                    <td>{{k.ename}}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col">
+                                <a href="{% url 'eupdt' k.id %}" class="form-control btn btn-outline-primary">Edit</a>
+                            </div>
+                            <div class="col">
+                                <a href="{% url 'edel' k.id %}" class="form-control btn btn-outline-danger">Delete</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+ 	</div>
+ </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static%}
+
+	<div class="container mt-4">
+	<div class="row">
+		<div class="card col-md-4 mr-2 shadow-lg border border-warning h-100">
+			<h3 class="p-2">Add Student</h3>
+			<form method="post">
+				{% csrf_token%}
+				<input type="text" name="a" placeholder="Roll Number" class="form-control my-2">
+				<input type="text" name="b"placeholder="Name" class="form-control my-2">
+				<input type="Number" name="c" min="1" max="4"placeholder="Year" 	class="form-control my-2">
+				<div class="row my-2">
+					<div class="col">
+						<input type="reset" value="Clear" class="btn btn-danger form-control ">
+					</div>
+					<div class="col">
+						<input type="submit" value="Create" class="btn btn-success form-control ">
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="card col shadow-lg border border-success h-100">
+			<h3 class="p-2">Student Data</h3>
+			<table class="table table-hover
+			table-stripped">
+				<tr class="bg-dark text-light">
+					<th>Sno</th>
+					<th>Roll</th>
+					<th>Name</th>
+					<th>Actions</th>
+				</tr>
+				<tr>{% for i in s %}</tr>
+				<tr>
+					<td>{{forloop.counter}}</td>
+					<td>{{i.rn}}</td>
+					<td>{{i.sn}}</td>
+					<td>
+						<div class="row">
+							<div class="col">
+								<a href="{% url 'stpd' i.id %}" class="form-control btn btn-primary">Edit</a>
+							</div>
+							<div class="col">
+								<a href="{% url 'sdel' i.id %}" class="form-control btn btn-danger">Delete</a>
+							</div>
+						</div>
+					</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
